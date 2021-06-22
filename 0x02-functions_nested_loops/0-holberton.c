@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "holberton.h"
 
 /**
  * main - Print text
@@ -9,6 +9,13 @@
 
 int main(void)
 {
-	printf("Holberton\n");
+	char *sh = "Holberton";
+
+	while (*sh)
+	{
+		_putchar(*sh);
+		sh++;
+	}
+	_putchar('\n');
 	return (0);
 }
