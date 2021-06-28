@@ -14,8 +14,12 @@ char *_strcpy(char *dest, char *src)
 
 	while (src[j] != 0)
 	{
-		count++;
-		j++;
+
+		if (src[j] != 0)
+		{
+			count++;
+			j++;
+		}
 	}
 	for (i = 0; i < count; i++)
 	{
