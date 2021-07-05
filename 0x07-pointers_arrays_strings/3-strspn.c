@@ -10,26 +10,23 @@
 
 unsigned int _strspn(char *s, char *accept)
 {
-	int counter = 0;
-	int i = 0;
-	int success = 0;
-	int checker;
+	unsigned int counter, i, success, checker;
 
-	while (s[counter] >= '\0')
+	success = 0;
+
+	for (counter = 0; s[counter] >= '\0'; counter++)
 	{
 		checker = 0;
-		while (accept[i] >= '\0')
+		for (i = 0; accept[i] >= '\0'; i++)
 		{
 			if (s[counter] == accept[i])
 			{
 				success++;
 				checker = 1;
 			}
-			i++;
 		}
 		if (checker == 0)
 			return (success);
-		counter++;
 	}
 	return (success);
 }
