@@ -12,18 +12,18 @@ char *_strstr(char *haystack, char *needle)
 {
 	unsigned int counter, i, checker;
 
-	for (counter = 0; s[counter] != '\0' ; counter++)
+	for (counter = 0; haystack[counter] != '\0' ; counter++)
 	{
 		checker = 0;
 		for (i = 0; needle[i] != '\0'; i++)
 		{
-			if (s[counter + i] == needle[i])
+			if (haystack[counter + i] == needle[i])
 				checker = 1;
 			else
 				checker = 0;
 		}
 		if (checker)
-			return (s + counter);
+			return (haystack + counter);
 	}
 	return (NULL);
 }
