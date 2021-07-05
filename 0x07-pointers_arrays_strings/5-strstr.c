@@ -1,6 +1,23 @@
 #include "holberton.h"
 
 /**
+ * _strcmp - compares strings
+ * @s1: first str
+ * @s2: second str
+ * Return: their diff or (0)
+ */
+
+int _strcmp(char *s1, char *s2)
+{
+        int j;
+
+        for (j = 0; s1[j] != '\0' && s2[j] != '\0'; j++)
+                if (s1[j] != s2[j])
+                        return (s1[j] - s2[j]);
+        return (0);
+}
+
+/**
  * _strstr - searches for substring.
  * @haystack: pointer to checked string
  * @needle: substring
@@ -10,19 +27,11 @@
 
 char *_strstr(char *haystack, char *needle)
 {
-	unsigned int counter, i, checker;
+	int counter, i;
 
 	for (counter = 0; haystack[counter] != '\0' ; counter++)
 	{
-		checker = 0;
-		for (i = 0; needle[i] != '\0'; i++)
-		{
-			if (haystack[counter + i] == needle[i])
-				checker = 1;
-			else
-				checker = 0;
-		}
-		if (checker && needle[i] == '\0')
+		if (_strcmp(haystack, needle) == 0)
 			return (haystack + counter);
 	}
 	return (NULL);
