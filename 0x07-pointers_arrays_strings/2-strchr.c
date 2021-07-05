@@ -12,7 +12,7 @@ char *_strchr(char *s, char c)
 {
 	unsigned int counter;
 
-	for (counter = 0; s[counter] != '\0' ; counter++)
+	for (counter = 0; s[counter] ; counter++)
 	{
 		if (s[counter] == c)
 			return (&s[counter]);
