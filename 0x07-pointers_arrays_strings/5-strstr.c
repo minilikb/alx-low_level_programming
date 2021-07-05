@@ -2,7 +2,7 @@
 
 /**
  * _strstr - searches for substring.
- * @haystacj: pointer to checked string
+ * @haystack: pointer to checked string
  * @needle: substring
  *
  * Return: a pointer to the first byte of the substring
