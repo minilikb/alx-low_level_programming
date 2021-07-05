@@ -15,10 +15,10 @@ unsigned int _strspn(char *s, char *accept)
 	int success = 0;
 	int checker;
 
-	while (s[counter])
+	while (s[counter] >= '\0')
 	{
 		checker = 0;
-		while (accept[i])
+		while (accept[i] >= '\0')
 		{
 			if (s[counter] == accept[i])
 			{
@@ -27,9 +27,9 @@ unsigned int _strspn(char *s, char *accept)
 			}
 			i++;
 		}
-		counter++;
 		if (checker == 0)
 			return (success);
+		counter++;
 	}
 	return (success);
 }
