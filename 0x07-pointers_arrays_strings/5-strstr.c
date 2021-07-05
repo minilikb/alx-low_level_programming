@@ -27,11 +27,11 @@ int _strcmp(char *s1, char *s2)
 
 char *_strstr(char *haystack, char *needle)
 {
-	int counter, i;
+	int counter;
 
 	for (counter = 0; haystack[counter] != '\0' ; counter++)
 	{
-		if (_strcmp(haystack, needle) == 0)
+		if (_strcmp((haystack + counter), needle) == 0)
 			return (haystack + counter);
 	}
 	return (NULL);
