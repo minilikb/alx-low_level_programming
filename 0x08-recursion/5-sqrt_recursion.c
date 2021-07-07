@@ -1,32 +1,35 @@
 #include "holberton.h"
-int root(int, int);
-/**
- * _sqrt_recursion - returns square root of a number
- * @n: the number
- *
- * Return: square root of n
- */
 
+/**
+ * _sqrt - aditional function
+ * @a: int
+ * @b: int
+ * Return: int
+ */
+int _sqrt(int a, int b)
+{
+	if ((a * a) == b)
+	{
+		return (a);
+	}
+	else if ((a * a) > b)
+	{
+		return (-1);
+	}
+
+	return (_sqrt((a + 1), b));
+}
+/**
+ * _sqrt_recursion - function that returns the natural square of a number
+ * @n: int
+ * Return: natural square root or -1
+ */
 int _sqrt_recursion(int n)
 {
-	if (n < 0)
-		return (-1);
-	else
-		return (root(n, (n + 1) / 2));
-}
+	if (n == 0)
+	{
+		return (0);
+	}
 
-/**
- * root - checks if perfect square
- * @n: input
- * @i: counter
- * Return: if square root
- */
-int root(int n, int i)
-{
-	if (i < 1)
-		return (-1);
-	else if (i * i == n)
-		return (i);
-	else
-		return (root(n, i - 1));
+	return (_sqrt(1, n));
 }
