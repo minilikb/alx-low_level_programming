@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+int root(int, int);
 /**
  * _sqrt_recursion - returns square root of a number
  * @n: the number
@@ -9,16 +9,24 @@
 
 int _sqrt_recursion(int n)
 {
-	if (n % 2 == 0)
-		return (2 + _sqrt_recursion(n / 2));
-	else if (n % 3 == 0)
-		return (3 + _sqrt_recursion(n / 3));
-	else if (n % 5 == 0)
-		return (5 + _sqrt_recursion(n / 5));
-	else if (n % 6 == 0)
-		return (6 + _sqrt_recursion(n / 6));
-	else if (n == 1)
-		return (0);
-	else
+	if (n < 0)
 		return (-1);
+	else
+		return (root(n, (n + 1) / 2));
+}
+
+/**
+ * root - checks if perfect square
+ * @n: input
+ * @i: counter
+ * Return: if square root
+ */
+int root(int n, int i)
+{
+	if (i < 1)
+		return (-1);
+	else if (i * i == n)
+		return (i);
+	else
+		return (root(n, i - 1));
 }
