@@ -13,15 +13,18 @@ int _isdigit(int c);
 
 int main(int argc, char *argv[])
 {
-	int i, sum;
+	int i, j, sum;
 
 	sum = 0;
 	for (i = 1; i < argc; i++)
 	{
-		if (!_isdigit(*argv[i]) && *argv[i] != 45)
+		for (j = 0; argv[i][j]; j++)
 		{
-			printf("Error\n");
-			return (1);
+			if (!_isdigit(argv[i][j]) && argv[i][j] != 45)
+			{
+				printf("Error\n");
+				return (1);
+			}
 		}
 
 		if (*argv[i] == 48)
