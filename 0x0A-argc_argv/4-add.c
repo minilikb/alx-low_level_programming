@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	sum = 0;
 	for (i = 1; i < argc; i++)
 	{
-		if (!_isdigit(*argv[i]))
+		if (!_isdigit(*argv[i]) && *argv[i] != 45)
 		{
 			printf("Error\n");
 			return (1);
