@@ -1,0 +1,81 @@
+#include "holberton.h"
+
+int _strlen(char *s);
+int _toint(char *s);
+/**
+ * main - multiplies two numbers
+ * @argc: number of arguments
+ * @argv: array of pointers to string arguments
+ *
+ * Return: always 0 for success
+ */
+
+int main(int argc, char *argv[])
+{
+	int num1, num2;
+
+	if (argc != 3)
+	{
+		printf("Error\n");
+		return (1);
+	}
+
+	if (*argv[1] == 48)
+		num1 = 0;
+	else
+		num1 = _toint(argv[1]);
+	if (*argv[2] == 48)
+		num2 = 0;
+	else
+		num2 = _toint(argv[2]);
+	printf("%d\n", num1 * num2);
+	return (0);
+}
+
+/**
+ * _strlen - prints out the length of the specified string
+ * @s: string which length is to be calculated
+ *
+ * Return: the length of the string (int)
+ */
+
+int _strlen(char *s)
+{
+	int size = 0;
+
+	while (*s)
+	{
+		size++;
+		s++;
+	}
+	return (size);
+}
+
+/**
+ * _toint - convert str to int
+ * @s: string value
+ *
+ * Return: int value
+ */
+int _toint(char *s)
+{
+	int size, i, number;
+
+	size = _strlen(s);
+	for (i = size - 1; i >= 0; i--)
+	{
+		if (s[i] > 47 && s[i] < 58 )
+		{
+			if (i == size - 1)
+				number = (s[i] - 48);
+			else
+				number = (number * 10) + ( s[i] - 48);
+		}
+		else
+		{
+			return (0);
+		}
+	}
+	printf("%s => %d\n", s, number);
+	return (number);
+}
