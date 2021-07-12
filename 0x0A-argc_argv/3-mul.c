@@ -62,20 +62,19 @@ int _toint(char *s)
 	int size, i, number;
 
 	size = _strlen(s);
-	for (i = size - 1; i >= 0; i--)
+	number = 0;
+	for (i = 0; i < size; i++)
 	{
-		if (s[i] > 47 && s[i] < 58 )
+		if (s[i] > 47 && s[i] < 58)
 		{
-			if (i == size - 1)
-				number = (s[i] - 48);
-			else
-				number = (number * 10) + ( s[i] - 48);
+			number = (number * 10) + (s[i] - 48);
+			printf("%dth - %d\n", i, number);
 		}
 		else
 		{
 			return (0);
 		}
 	}
-	printf("%s => %d\n", s, number);
+	printf("%s => %d : len - %d\n", s, number, size);
 	return (number);
 }
