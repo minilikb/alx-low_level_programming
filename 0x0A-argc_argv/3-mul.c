@@ -68,13 +68,13 @@ int _toint(char *s)
 		if (s[i] > 47 && s[i] < 58)
 		{
 			number = (number * 10) + (s[i] - 48);
-			printf("%dth - %d\n", i, number);
+			/* printf("%dth - %d\n", i, number); */
 		}
 		else
 		{
 			return (0);
 		}
 	}
-	printf("%s => %d : len - %d\n", s, number, size);
+	/* printf("%s => %d : len - %d\n", s, number, size); */
 	return (number);
 }
