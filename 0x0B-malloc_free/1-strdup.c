@@ -2,7 +2,7 @@
 
 /**
  * _strdup - duplicate a string in memory
- * @str: the pointer to string 
+ * @str: the pointer to string
  *
  * Return: pointer to allocated space
  */
