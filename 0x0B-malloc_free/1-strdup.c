@@ -12,6 +12,8 @@ char *_strdup(char *str)
 	char *array;
 	unsigned int counter, size;
 
+	if (str == NULL)
+		return (NULL);
 	for (counter = 0; str[counter]; counter++)
 	{
 		size++;
