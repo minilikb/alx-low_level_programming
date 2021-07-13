@@ -16,37 +16,47 @@ char *str_concat(char *s1, char *s2)
 	size1 = 0;
 	size2 = 0;
 	counter = 0;
-	if (s1 == NULL && s2 == NULL)
+	if (s1 != NULL)
 	{
-		array = malloc(sizeof(char));
-		array[0] = '\0';
-		return (array);
-	}
 	while (s1[counter])
 	{
 		size1++;
 		counter++;
 	}
+	}
+	else
+		size1 = 0;
 	counter = 0;
+	if (s2 != NULL)
+	{
 	while (s2[counter])
 	{
 		size2++;
 		counter++;
 	}
+	}
+	else
+		size2 = 0;
 	counter = 0;
 	array = malloc(sizeof(char) * (size1 + size2 + 1));
 	if (array == NULL)
 		return (NULL);
+	if (s1 != NULL)
+	{
 	while (s1[counter])
 	{
 		array[counter] = s1[counter];
 		counter++;
 	}
+	}
 	counter = 0;
+	if (s2 != NULL)
+	{
 	while (s2[counter])
 	{
 		array[size1 + counter] = s2[counter];
 		counter++;
+	}
 	}
 	array[size1 + size2] = '\0';
 	return (array);
