@@ -1,39 +1,39 @@
 #include "holberton.h"
+
 /**
- * alloc_grid - nested loop to make grid
- * @width: width input
- * @height: height input
- * Return: pointer to 2 dim. array
+ * alloc_grid - function that returns a pointer to a 2 dimensional array of int
+ * @width: int
+ * @height: int
+ * Return: pointer
  */
 int **alloc_grid(int width, int height)
 {
-	int **iarray;
-	int i, n;
+	int **matrix;
+	int i;
+	int j;
 
-	if (width <= 0 || height <= 0)
+	if (width < 1 || height < 1)
 		return (NULL);
-
-	iarray = malloc(sizeof(int) * height);
-
-	if (iarray == NULL)
-	{
-		free(iarray);
+	matrix = malloc(sizeof(int *) * height);
+	if (matrix == NULL)
 		return (NULL);
-	}
 
 	for (i = 0; i < height; i++)
 	{
-		iarray[i] = malloc(sizeof(int) * width);
-		if (iarray == NULL)
+		matrix[i] = malloc(sizeof(int) * width);
+		if (matrix[i] == NULL)
 		{
-			free(iarray);
+			for (j = 0; j < i; j++)
+			{
+				free(matrix[j]);
+			}
+			free(matrix);
 			return (NULL);
 		}
-
-		for (n = 0; n < width; n++)
+		for (j = 0; j < width; j++)
 		{
-			iarray[i][n] = 0;
+			matrix[i][j] = 0;
 		}
 	}
-	return (iarray);
+	return (matrix);
 }
