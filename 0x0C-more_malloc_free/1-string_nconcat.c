@@ -1,48 +1,49 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "holberton.h"
-
 /**
- * string_nconcat - concatenates selected bytes of string
- * @s1: dest str
- * @s2: src str
- * @n: selected bytes
- *
- * Return: pointer to allocated space
+ * string_nconcat - len of 1st str, len of 2nd str, if n < 2nd, 2nd = n
+ * 2nd + 1st = total len, malloc + null byte, loop to insert into temp arr
+ * @s1: input one
+ * @s2: input two
+ * @n: s2's number of bytes
+ * Return: 0
  */
-
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *address;
-	unsigned int i = 0, j = 0, c = 0, c2 = 0;
+	char *arr;
+	unsigned int i, j, co, co_2;
 
 	if (s1 == NULL)
 		s1 = "";
 	if (s2 == NULL)
 		s2 = "";
-	for (; s1[i]; i++)
-	{}
-	for (; s2[j]; j++)
-	{}
-	if (n < j)
+
+	for (i = 0; s1[i] != '\0'; i++)
 	{
-		j = n;
 	}
 
-	address = malloc(sizeof(char *) * (j + i + 1));
-	if (address == NULL)
+	for (j = 0; s2[j] != '\0'; j++)
+	{
+	}
+
+	if (n < j)
+		j = n;
+
+	j += i;
+	arr = malloc(sizeof(char *) * (j + 1));
+
+	if (arr == NULL)
 		return (NULL);
 
-	for (; c < i || c2 < j ; c++)
+	for (co = 0; co < i; co++)
+		arr[co] = s1[co];
+	for (co_2 = 0; co < j; co_2++)
 	{
-		if (c < i)
-		{
-			address[c] = s1[c];
-		}
-		if (c >= i && c2 < j)
-		{
-			address[c] = s2[c2];
-			c2++;
-		}
+		arr[co] = s2[co_2];
+		co++;
 	}
-	address[i + j] = '\0';
-	return (address);
+	co++;
+	arr[co] = '\0';
+	return (arr);
 }
