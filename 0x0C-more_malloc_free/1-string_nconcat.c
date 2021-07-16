@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * string-nconcat - concatenates selected bytes of string
+ * string_nconcat - concatenates selected bytes of string
  * @s1: dest str
  * @s2: src str
  * @n: selected bytes
@@ -37,7 +37,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		{
 			address[c] = s1[c];
 		}
-		if( c >= i && c2 < j)
+		if (c >= i && c2 < j)
 		{
 			address[c] = s2[c2];
 			c2++;
