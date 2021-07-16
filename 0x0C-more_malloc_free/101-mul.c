@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-	if (_toint(argv[2]))
+	if (_toint(argv[2]) == 0)
 	{
 		printf("Error\n");
 		exit(98);
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 		num2 = 0;
 	else
 		num2 = _toint(argv[2]);
-	printf("%d\n", num1 * num2);
+	printf("%ld\n", num1 * num2);
 	return (0);
 }
 
@@ -92,7 +92,7 @@ int _toint(char *s)
 			return (0);
 		}
 	}
-	/* printf("%s => %d : len - %d\n", s, number, size); */
+	/* printf("%s => %ld : len - %d\n", s, number, size); */
 	if (isNegative)
 		return (-1 * number);
 	return (number);
