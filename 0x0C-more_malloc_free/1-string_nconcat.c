@@ -26,6 +26,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		j = 0;
 	}
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = NULL;
 
 	address = malloc(sizeof(char *) * (j + i + 1));
 	if (address == NULL)
