@@ -12,12 +12,12 @@ int _toint(char *s);
 
 int main(int argc, char *argv[])
 {
-	int num1, num2;
+	long int num1, num2;
 
 	if (argc != 3)
 	{
 		printf("Error\n");
-		exit (98);
+		exit(98);
 	}
 	if (_toint(argv[1]) == 0)
 	{
@@ -69,7 +69,8 @@ int _strlen(char *s)
  */
 int _toint(char *s)
 {
-	int size, i, number, isNegative;
+	int size, i, isNegative;
+	long int number;
 
 	size = _strlen(s);
 	number = 0;
