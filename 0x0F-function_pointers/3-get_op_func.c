@@ -23,8 +23,6 @@ int (*get_op_func(char *s))(int, int)
 	{
 		if (*s == *(ops[i].op))
 		{
-			printf("OP - %s\n", s);
-			printf("Match - %s\n", ops[i].op);
 			return (ops[i].f);
 		}
 		i++;
