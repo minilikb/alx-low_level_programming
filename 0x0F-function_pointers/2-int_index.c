@@ -1,7 +1,7 @@
 #include "function_pointers.h"
 
 /**
- * int_index - calls compare callback on 
+ * int_index - calls compare callback on
  * each element of array to search for element
  * @array: pointer to array
  * @size: size of array
