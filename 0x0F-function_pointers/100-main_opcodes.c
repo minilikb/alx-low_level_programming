@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		printf("Error\n");
-		return (1);
+		exit(1);
 	}
 
 	size = atoi(argv[1]);
@@ -29,10 +29,11 @@ int main(int argc, char *argv[])
 	while (counter < size)
 	{
 		printf("%02hhx", *((char *)main + counter));
-		if (i < size - 1)
+		if (counter < size - 1)
 			printf(" ");
 		else
 			printf("\n");
+		counter++;
 	}
 	return (0);
 }
