@@ -10,8 +10,7 @@
 
 int main(int argc, char *argv[])
 {
-	int num1, num2;
-	int (*op)(int, int);
+	int num1, num2, result;
 
 	if (argc != 4)
 	{
@@ -25,12 +24,7 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(100);
 	}
-	op = get_op_func(argv[2]);
-	if (op == NULL)
-	{
-		printf("Error\n");
-		exit(99);
-	}
-	printf("%d\n", op(num1, num2));
+	result = (*get_op_func(argv[2]))(num1, num2);
+	printf("%d\n", result);
 	return (0);
 }
