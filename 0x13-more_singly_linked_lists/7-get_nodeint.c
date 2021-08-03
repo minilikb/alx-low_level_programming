@@ -1,26 +1,23 @@
 #include "lists.h"
 /**
- * get_nodeint_at_index - Entry Point
- * @head: head
- * @index: index
- * Return: 0
+ * get_nodeint_at_index - search node
+ * @head: linked list
+ * @index: index to find in linked list
+ * Return: the node that equal to index or NULL
  */
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	unsigned int count = 0;
+	unsigned int i;
 
-	while (count < index)
+	i = 0;
+	while (head != NULL)
 	{
-		if (head->next == NULL)
+		if (i == index)
 		{
-			return (NULL);
+			return (head);
 		}
-		else
-		{
-			count++;
-			head = head->next;
-		}
+		head = head->next;
+		i++;
 	}
-
-	return (head);
+	return (NULL);
 }

@@ -1,17 +1,17 @@
 #include "lists.h"
 /**
- * free_listint - Entry Point
- * @head: head
- * Return: 0
+ * free_listint - free a linked list of int
+ * @head: pointer of pointer that contain adress of
+ * Return: nothing
  */
 void free_listint(listint_t *head)
 {
-	if (head == NULL)
-		return;
+	listint_t *tmp;
 
-	while (head)
+	while (head != NULL)
 	{
-		free(head);
+		tmp = head;
 		head = head->next;
+		free(tmp);
 	}
 }

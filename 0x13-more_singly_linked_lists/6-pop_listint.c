@@ -1,23 +1,18 @@
 #include "lists.h"
 /**
- * pop_listint - Entry Point
- * @head: head
- * Return: 0
+ * pop_listint - remove the first node
+ * @head: pointer of pointer that contain adress of
+ * Return: data in this node
  */
 int pop_listint(listint_t **head)
 {
-	int node_data;
-
-	listint_t *new;
+	int tmp_nb;
+	listint_t *to_free = *head;
 
 	if (*head == NULL)
 		return (0);
-
-	node_data = (*head)->n;
-
-	new = *head;
+	tmp_nb = to_free->n;
 	*head = (*head)->next;
-
-	free(new);
-	return (node_data);
+	free(to_free);
+	return (tmp_nb);
 }

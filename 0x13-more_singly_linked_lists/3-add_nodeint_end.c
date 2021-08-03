@@ -1,34 +1,34 @@
 #include "lists.h"
 /**
- * add_nodeint_end - Entry Point
- * @head: head
- * @n: value
- * Return: 0
+ * add_nodeint_end - add a new node at the end
+ * @head: pointer of pointer that contain adress of
+ * last node or NULL
+ * @n: integer
+ * Return: adress of the new node or NULL
  */
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
-	listint_t *new;
-	listint_t *temp;
+	listint_t *next;
 
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
+	next = malloc(sizeof(listint_t));
+	if (next == NULL)
 		return (NULL);
-
-	new->n = n;
-	new->next = NULL;
-
-	if (*head == NULL)
+	if (next != NULL)
 	{
-		*head = new;
-		return (new);
+		next->n = n;
+		next->next = NULL;
+		if (*head == NULL)
+			*head = next;
+		else
+		{
+			listint_t *tmp = *head;
+
+			while (tmp->next != NULL)
+			{
+				tmp = tmp->next;
+			}
+			tmp->next = next;
+		}
 	}
-
-	temp = *head;
-
-	while (temp->next != NULL)
-		temp = temp->next;
-
-	temp->next = new;
-
-	return (new);
+	return (next);
 }
