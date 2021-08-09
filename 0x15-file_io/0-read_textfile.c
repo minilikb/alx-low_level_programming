@@ -29,7 +29,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	buff[letters] = '\0';
 	write_res = write(1, buff, read_res);
-	if (write_res == -1)
+	if (write_res == -1 || write_res != (int) letters)
 		return (0);
 
 	close(fd);
