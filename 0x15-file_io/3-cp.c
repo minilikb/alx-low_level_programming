@@ -1,73 +1,78 @@
 #include "holberton.h"
-void closer(int arg_files);
-/**
- * main - Entry Point
- * @argc: # of args
- * @argv: array pointer for args
- * Return: 0
- */
-int main(int argc, char *argv[])
-{
-	int file_from, file_to, file_from_r, wr_err;
-	char buf[1024];
+#include <stdlib.h>
+#include <string.h>
 
-	if (argc != 3)
+/**
+ * copy_file - copy content to another file
+ * @fd_from: file descriptor of file from
+ * @fd_to: file descriptor of file to
+ * Return: 0 or NULL
+ */
+int copy_file(int fd_from, int fd_to)
+{
+	int read_from = 0, wrt_to = 0;
+	char buffer[1024];
+
+	while ((read_from = read(fd_from, buffer, 1024)) > 0)
+	{
+		if (read_from == -1)
+			return (98);
+		if (read_from > 0)
+		{
+			wrt_to = write(fd_to, buffer, read_from);
+			if (wrt_to == -1)
+				return (99);
+		}
+	}
+	if (read_from == -1)
+		return (98);
+	if (wrt_to == -1)
+		return (99);
+	return (1);
+}
+
+/**
+ * main - entry, copy content file to another
+ * @ac: number of arguments
+ * @av: argument
+ * Return: exit or 0
+ */
+int main(int ac, char *av[])
+{
+	int fd_file_from = 0, fd_file_to = 0, r_file = 0;
+
+	if (ac != 3)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
-	file_from = open(argv[1], O_RDONLY);
-	if (file_from == -1)
+	fd_file_from = open(av[1], O_RDONLY);
+	fd_file_to = open(av[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
+	if (fd_file_from == -1)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
-
-	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
-	if (file_to == -1)
+	if (fd_file_to == -1)
 	{
-		dprintf(2, "Error: Can't write to %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 		exit(99);
 	}
-
-	while (file_from_r >= 1024)
+	r_file = copy_file(fd_file_from, fd_file_to);
+	if (r_file == 98)
 	{
-		file_from_r = read(file_from, buf, 1024);
-		if (file_from_r == -1)
-		{
-			dprintf(2, "Error: Can't read from file %s\n", argv[1]);
-			closer(file_from);
-			closer(file_to);
-			exit(98);
-		}
-		wr_err = write(file_to, buf, file_from_r);
-		if (wr_err == -1)
-		{
-			dprintf(2, "Error: Can't write to %s\n", argv[2]);
-			exit(99);
-		}
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+		exit(98);
 	}
-
-	closer(file_from);
-	closer(file_to);
-	return (0);
-}
-
-/**
- * closer - close with error
- * @arg_files: argv 1 or 2
- * Return: void
- */
-void closer(int arg_files)
-{
-	int close_err;
-
-	close_err = close(arg_files);
-
-	if (close_err == -1)
+	if (r_file == 99)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", arg_files);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+		exit(99);
+	}
+	if (close(fd_file_from) == -1 || close(fd_file_to) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_file_from);
 		exit(100);
 	}
+	return (0);
 }
