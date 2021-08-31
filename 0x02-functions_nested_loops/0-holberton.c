@@ -1,5 +1,5 @@
 #include "main.h"
-#include "Holberton.h"
+#include "Holberton.c"
 /**
  * main - Print text
  *
