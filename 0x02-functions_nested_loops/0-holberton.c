@@ -1,5 +1,5 @@
 cat main.c
-#include "Holberton.c"
+#include "main.h"
 /**
  * main - Print text
  *
