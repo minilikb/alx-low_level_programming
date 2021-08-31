@@ -1,4 +1,4 @@
-#include "main.h"
+cat main.c
 #include "Holberton.c"
 /**
  * main - Print text
